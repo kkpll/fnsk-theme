@@ -1,0 +1,17 @@
+{
+    "name": "daisukeizutsu/fnsk",
+    "description": "",
+    "type": "project",
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "DaisukeIzutsu",
+            "email": "idutsudaisuke@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {"Src\\": "./src"}
+    }
+}
