@@ -10,6 +10,7 @@ if( file_exists( dirname( __FILE__ ) . '/vendor/autoload.php' ) ){
 
 $fnsk = new Src\Fnsk();
 
+
 // //テーマ切り替え時
 // function fnsk_activate(){
 // }
