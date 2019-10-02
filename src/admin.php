@@ -4,13 +4,13 @@ namespace Src;
 
 class Admin extends Base{
 
-    public $validate;
+    public $sanitize;
 
     public function __construct(){
 
         echo "ADMIN";
 
-        $this->validate = new Validate();
+        $this->sanitize = new Sanitize();
 
         register_setting(
             'fnsk_options',

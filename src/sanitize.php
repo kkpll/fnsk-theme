@@ -2,7 +2,7 @@
 
 namespace Src;
 
-class Validate extends Base{
+class Sanitize extends Base{
 
     public function __construct(){
         echo "Validate";
