@@ -5,11 +5,13 @@ namespace Src\Pages;
 use Src\Base;
 use Src\Callbacks\Sanitize;
 
-class Cpt{
+class Cpt extends Base{
 
     public $sanitize;
 
     public function __construct(){
+
+        parent::__construct();
 
         $this->sanitize = new Sanitize();
 

@@ -11,6 +11,8 @@ class Admin extends Base{
 
     public function __construct(){
 
+        parent::__construct();
+
         $this->sanitize = new Sanitize();
 
         add_action( 'admin_init', array( $this, 'set_admin_form' ) );
@@ -29,7 +31,7 @@ class Admin extends Base{
             'fnsk_top_section',
             'トップセクション',
             array( $this, 'render_top_section' ),
-            'fnsk'
+            'fnsk',
         );
 
         add_settings_field(
@@ -39,6 +41,7 @@ class Admin extends Base{
             'fnsk',
             'fnsk_top_section'
         );
+
     }
 
     public function set_admin_page(){
