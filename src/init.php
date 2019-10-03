@@ -2,12 +2,12 @@
 
 namespace Src;
 
-class Fnsk{
+class Init{
 
     public function __construct (){
 
         $classes = array(
-            Admin::class,
+            Pages\Admin::class,
             Enqueue::class,
         );
 

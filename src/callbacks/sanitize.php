@@ -1,15 +1,18 @@
 <?php
 
-namespace Src;
+namespace Src\Callbacks;
 
 class Sanitize extends Base{
 
     public function __construct(){
-        echo "Validate";
     }
 
     public function tel($input){
-        echo $input;
+        return $input;
+    }
+
+    public function ctp($input){
+        return $input;
     }
 
 }
