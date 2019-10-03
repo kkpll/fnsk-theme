@@ -4,16 +4,19 @@ namespace Src\Pages;
 
 use Src\Base;
 use Src\Callbacks\Sanitize;
+use Src\Callbacks\Page;
 
-class Admin extends Base{
+class Dashboard extends Base{
 
     public $sanitize;
+    public $page;
 
     public function __construct(){
 
         parent::__construct();
 
         $this->sanitize = new Sanitize();
+        $this->page = new Page();
 
         add_action( 'admin_init', array( $this, 'set_admin_form' ) );
         add_action( 'admin_menu', array( $this, 'set_admin_page' ) );
@@ -51,7 +54,7 @@ class Admin extends Base{
             'Fnsk',
             'manage_options',
             'fnsk',
-            array( $this, 'render_admin_top_page' )
+            array( $this->page, 'dashboard' )
         );
 
         add_submenu_page(
@@ -60,28 +63,9 @@ class Admin extends Base{
             'ダッシュボード',
             'manage_options',
             'fnsk',
-            array( $this, 'render_admin_top_page')
+            array( $this->page, 'dashboard' )
         );
 
-    }
-
-    public function render_admin_top_page(){
-        ?>
-
-        <div class="wrap">
-            <h2>設定画面</h2>
-            <form method="post" action="options.php">
-                <?php
-
-                    settings_fields( 'fnsk_top_group' );
-                    do_settings_sections( 'fnsk' );
-                    submit_button();
-
-                 ?>
-            </form>
-        </div>
-
-        <?php
     }
 
     public function render_top_section(){

@@ -7,7 +7,7 @@ class Init{
     public function __construct (){
 
         $classes = array(
-            Pages\Admin::class,
+            Pages\Dashboard::class,
             Pages\Cpt::class,
             Enqueue::class,
         );
