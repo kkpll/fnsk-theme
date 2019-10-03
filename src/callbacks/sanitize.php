@@ -2,6 +2,8 @@
 
 namespace Src\Callbacks;
 
+use Src\Base;
+
 class Sanitize extends Base{
 
     public function __construct(){

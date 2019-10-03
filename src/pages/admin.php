@@ -3,7 +3,7 @@
 namespace Src\Pages;
 
 use Src\Base;
-use Src\Sanitize;
+use Src\Callbacks\Sanitize;
 
 class Admin extends Base{
 
