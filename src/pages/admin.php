@@ -24,14 +24,14 @@ class Admin extends Base{
         register_setting(
             'fnsk_top_group',
             'fnsk_top_name',
-            array( $this->sanitize, 'ctp')
+            array( $this->sanitize, 'ctp' )
         );
 
         add_settings_section(
             'fnsk_top_section',
             'トップセクション',
             array( $this, 'render_top_section' ),
-            'fnsk',
+            'fnsk'
         );
 
         add_settings_field(
@@ -51,7 +51,7 @@ class Admin extends Base{
             'Fnsk',
             'manage_options',
             'fnsk',
-            array( $this, 'render_admin_top_page' ),
+            array( $this, 'render_admin_top_page' )
         );
 
         add_submenu_page(
@@ -60,7 +60,7 @@ class Admin extends Base{
             'ダッシュボード',
             'manage_options',
             'fnsk',
-            array( $this, 'render_admin_top_page'),
+            array( $this, 'render_admin_top_page')
         );
 
     }

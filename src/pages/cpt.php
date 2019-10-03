@@ -27,7 +27,7 @@ class Cpt extends Base{
             'カスタム投稿',
             'manage_options',
             'fnsk_ctp_page',
-            array( $this, 'render_admin_ctp_page'),
+            array( $this, 'render_admin_ctp_page')
         );
 
     }
