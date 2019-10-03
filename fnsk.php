@@ -1,7 +1,7 @@
 <?php
 /*
-Plugin Name: Fnsk
-Description: Description
+Plugin Name: fnsk
+Description: This is fnsk plugin
 Version: 1.0.0
 Author: DAISUKE IZUTSU
 Text Domain: fnsk
