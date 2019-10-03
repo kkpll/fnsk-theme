@@ -8,6 +8,7 @@ class Init{
 
         $classes = array(
             Pages\Admin::class,
+            Pages\Cpt::class,
             Enqueue::class,
         );
 

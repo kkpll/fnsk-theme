@@ -19,27 +19,26 @@ class Admin extends Base{
 
     public function set_admin_form(){
 
-        add_settings_section(
-            'fnsk_ctp_section',
-            'カスタム投稿セクション',
-            array( $this, 'render_ctp_section' ),
-            'fnsk_ctp_page'
-        );
-
-        add_settings_field(
-            'fnsk_ctp_field',
-            'カスタム投稿フィールド',
-            array( $this, 'render_ctp_field' ),
-            'fnsk_ctp_page',
-            'fnsk_ctp_section'
-        );
-
         register_setting(
-            'fnsk_ctp_group',
-            'fnsk_ctp_name',
+            'fnsk_top_group',
+            'fnsk_top_name',
             array( $this->sanitize, 'ctp')
         );
 
+        add_settings_section(
+            'fnsk_top_section',
+            'トップセクション',
+            array( $this, 'render_top_section' ),
+            'fnsk'
+        );
+
+        add_settings_field(
+            'fnsk_top_field',
+            'トップフィールド',
+            array( $this, 'render_top_field' ),
+            'fnsk',
+            'fnsk_top_section'
+        );
     }
 
     public function set_admin_page(){
@@ -61,15 +60,6 @@ class Admin extends Base{
             array( $this, 'render_admin_top_page'),
         );
 
-        add_submenu_page(
-            'fnsk',
-            'カスタム投稿',
-            'カスタム投稿',
-            'manage_options',
-            'fnsk_ctp_page',
-            array( $this, 'render_admin_ctp_page'),
-        );
-
     }
 
     public function render_admin_top_page(){
@@ -78,22 +68,12 @@ class Admin extends Base{
         <div class="wrap">
             <h2>設定画面</h2>
             <form method="post" action="options.php">
-            </form>
-        </div>
-
-        <?php
-    }
-
-    public function render_admin_ctp_page(){
-        ?>
-
-        <div class="wrap">
-            <h2>カスタム投稿ページ</h2>
-            <form method="post" action="options.php">
                 <?php
-                    settings_fields( 'fnsk_ctp_group' );
-                    do_settings_sections( 'fnsk_ctp_page' );
+
+                    settings_fields( 'fnsk_top_group' );
+                    do_settings_sections( 'fnsk' );
                     submit_button();
+
                  ?>
             </form>
         </div>
@@ -101,12 +81,13 @@ class Admin extends Base{
         <?php
     }
 
-    public function render_ctp_section(){
-        echo "カスタム投稿セクション";
+    public function render_top_section(){
+        echo "トップセクション";
     }
 
-    public function render_ctp_field(){
-        echo "<input type='text' name='fnsk_ctp_name' value='".get_option('fnsk_ctp_name')."' />";
+    public function render_top_field(){
+        echo "<input type='text' name='fnsk_top_name' value='".get_option('fnsk_top_name')."' />";
     }
+
 
 }
