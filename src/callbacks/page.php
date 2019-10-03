@@ -7,7 +7,7 @@ use Src\Base;
 class Page extends Base{
 
     public function dashboard(){
-        require_once 
+         
     }
 
     public function cpt(){
