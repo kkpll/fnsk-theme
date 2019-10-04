@@ -20,6 +20,7 @@ class Dashboard extends Base{
 
         add_action( 'admin_init', array( $this, 'set_admin_form' ) );
         add_action( 'admin_menu', array( $this, 'set_admin_page' ) );
+        
     }
 
     public function set_admin_form(){

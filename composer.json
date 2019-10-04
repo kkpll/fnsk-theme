@@ -10,7 +10,9 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {},
+    "require": {
+        "twig/twig": "3.x-dev"
+    },
     "autoload": {
         "psr-4": {"Src\\": "./src"}
     }

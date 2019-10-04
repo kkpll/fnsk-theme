@@ -13,8 +13,13 @@ class Sanitize extends Base{
         return $input;
     }
 
-    public function ctp($input){
+    public function cpt($input){
         return $input;
     }
+
+    public function sanitize($input){
+        return $input;
+    }
+
 
 }

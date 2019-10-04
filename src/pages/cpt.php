@@ -4,19 +4,29 @@ namespace Src\Pages;
 
 use Src\Base;
 use Src\Callbacks\Sanitize;
+use Src\Callbacks\Page;
+use Src\Callbacks\Field;
+use Src\Csv;
 
 class Cpt extends Base{
 
     public $sanitize;
+    public $page;
+    public $field;
+    public $csv;
 
     public function __construct(){
 
         parent::__construct();
 
         $this->sanitize = new Sanitize();
+        $this->page = new Page();
+        $this->field = new Field();
+        $this->csv = new Csv('cpt');
 
         add_action( 'admin_init', array( $this, 'set_admin_form' ) );
         add_action( 'admin_menu', array( $this, 'set_admin_page' ) );
+
     }
 
     public function set_admin_page(){
@@ -26,8 +36,8 @@ class Cpt extends Base{
             'カスタム投稿',
             'カスタム投稿',
             'manage_options',
-            'fnsk_ctp_page',
-            array( $this, 'render_admin_ctp_page')
+            'fnsk_cpt_page',
+            array( $this->page, 'cpt' )
         );
 
     }
@@ -35,52 +45,45 @@ class Cpt extends Base{
     public function set_admin_form(){
 
         register_setting(
-            'fnsk_ctp_group',
-            'fnsk_ctp_name',
-            array( $this->sanitize, 'ctp')
+            'fnsk_cpt_group',
+            'fnsk_cpt_name',
+            array( $this->sanitize, 'cpt')
         );
 
         add_settings_section(
-            'fnsk_ctp_section',
+            'fnsk_cpt_section',
             'カスタム投稿セクション',
-            array( $this, 'render_ctp_section' ),
-            'fnsk_ctp_page'
+            array( $this, 'render_cpt_section' ),
+            'fnsk_cpt_page'
         );
 
         add_settings_field(
-            'fnsk_ctp_field',
+            'fnsk_cpt_field',
             'カスタム投稿フィールド',
-            array( $this, 'render_ctp_field' ),
-            'fnsk_ctp_page',
-            'fnsk_ctp_section'
+            array( $this->field, 'cpt' ),
+            'fnsk_cpt_page',
+            'fnsk_cpt_section'
+        );
+
+        //CSVインポート
+        register_setting(
+            'fnsk_cpt_group',
+            'fnsk_cpt_csv_name',
+            array( $this->sanitize, 'cpt')
+        );
+
+        add_settings_field(
+            'fnsk_cpt_csv_field',
+            'CSV読み込み',
+            array( $this->field, 'csv' ),
+            'fnsk_cpt_page',
+            'fnsk_cpt_section'
         );
 
     }
 
-    public function render_admin_ctp_page(){
-        ?>
-
-        <div class="wrap">
-            <h1 class="wp-heading-inline">カスタム投稿ページ</h1>
-            <a href="#" class="page-title-action">新規追加</a>
-            <form method="post" action="options.php">
-                <?php
-                    settings_fields( 'fnsk_ctp_group' );
-                    do_settings_sections( 'fnsk_ctp_page' );
-                    submit_button();
-                 ?>
-            </form>
-        </div>
-
-        <?php
-    }
-
-    public function render_ctp_section(){
+    public function render_cpt_section(){
         echo "カスタム投稿セクション";
-    }
-
-    public function render_ctp_field(){
-        echo "<input type='text' name='fnsk_ctp_name' value='".get_option('fnsk_ctp_name')."' />";
     }
 
 }

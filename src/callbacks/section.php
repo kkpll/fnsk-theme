@@ -2,12 +2,20 @@
 
 namespace Src\Callbacks;
 
-use Src\Base;
+use Src\Template;
 
-class Section extends Base{
+class Section extends Template{
 
     public function dashboard(){
-         require_once( $this->plugin_path . 'template/tpl_dashboard.php' );
+         $template = $this->template;
+         echo $template->render( 'dashboard_section.html' );
     }
+
+    public function cpt(){
+        $template = $this->template;
+        echo $template->render( 'cpt_section.html' );
+    }
+
+
 
 }

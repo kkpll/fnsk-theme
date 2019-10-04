@@ -2,17 +2,25 @@
 
 namespace Src\Callbacks;
 
-use Src\Base;
+use Src\Template;
 
-class Page extends Base{
+class Page extends Template{
 
     public function dashboard(){
-         require_once( $this->plugin_path . 'template/tpl_dashboard.php' );
+         $template = $this->template;
+         echo $template->render( 'dashboard.html' );
     }
 
     public function cpt(){
-
+        $template = $this->template;
+        echo $template->render( 'cpt.html' );
     }
+
+    public function redirect(){
+        $template = $this->template;
+        echo $template->render( 'redirect.html' );
+    }
+
 
 
 

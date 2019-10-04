@@ -9,6 +9,7 @@ class Init{
         $classes = array(
             Pages\Dashboard::class,
             Pages\Cpt::class,
+            Pages\Redirect::class,
             Enqueue::class,
         );
 
