@@ -1,12 +1,12 @@
 <?php
 
-namespace Src\Pages;
+namespace App\Controllers;
 
-use Src\Base;
-use Src\Callbacks\Sanitize;
-use Src\Callbacks\Page;
-use Src\Callbacks\Field;
-use Src\Csv;
+use App\Base;
+use App\Callbacks\Sanitize;
+use App\Callbacks\Page;
+use App\Callbacks\Field;
+use App\Components\Csv;
 
 class Cpt extends Base{
 
@@ -24,12 +24,9 @@ class Cpt extends Base{
         $this->field = new Field();
         $this->csv = new Csv('cpt');
 
-        add_action( 'admin_init', array( $this, 'set_admin_form' ) );
-        add_action( 'admin_menu', array( $this, 'set_admin_page' ) );
-
     }
 
-    public function set_admin_page(){
+    public function admin_menu(){
 
         add_submenu_page(
             'fnsk',
@@ -42,7 +39,7 @@ class Cpt extends Base{
 
     }
 
-    public function set_admin_form(){
+    public function admin_init(){
 
         register_setting(
             'fnsk_cpt_group',

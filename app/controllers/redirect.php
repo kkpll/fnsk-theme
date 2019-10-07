@@ -1,12 +1,12 @@
 <?php
 
-namespace Src\Pages;
+namespace App\Controllers;
 
-use Src\Base;
-use Src\Csv;
-use Src\Callbacks\Page;
-use Src\Callbacks\Field;
-use Src\Callbacks\Sanitize;
+use App\Base;
+use App\Components\Csv;
+use App\Callbacks\Page;
+use App\Callbacks\Field;
+use App\Callbacks\Sanitize;
 
 class Redirect extends Base{
 
@@ -24,12 +24,9 @@ class Redirect extends Base{
         $this->field = new Field();
         $this->sanitize = new Sanitize();
 
-        add_action( 'admin_init', array( $this, 'set_admin_form' ) );
-        add_action( 'admin_menu', array( $this, 'set_admin_page' ) );
-
     }
 
-    public function set_admin_page(){
+    public function admin_menu(){
 
         $page = add_submenu_page(
             'fnsk',
@@ -40,11 +37,9 @@ class Redirect extends Base{
             array( $this->page, 'redirect' )
         );
 
-        add_action( 'admin_print_scripts-' . $page, array( $this, 'admin_print_scripts') );
-
     }
 
-    public function set_admin_form(){
+    public function admin_init(){
 
         register_setting(
             'fnsk_redirect_group',
@@ -54,8 +49,8 @@ class Redirect extends Base{
 
         add_settings_section(
             'fnsk_redirect_section',
-            'リダイレクト設定セクション',
-            array( $this, 'render_redirect_section' ),
+            '',
+            '',
             'fnsk_redirect_page'
         );
 
@@ -72,12 +67,7 @@ class Redirect extends Base{
 
     }
 
-    public function render_redirect_section(){
-        echo "リダイレクト設定セクション";
-    }
-
-
-    public function admin_print_scripts(){
+    public function admin_enqueue_scripts(){
         wp_enqueue_script( 'redirect.js', $this->plugin_url . 'assets/js/admin/redirect.js', array( 'jquery' ), filemtime( $this->plugin_path . 'assets/js/admin/redirect.js' ), true );
     }
 

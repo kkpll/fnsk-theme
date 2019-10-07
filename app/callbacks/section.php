@@ -1,8 +1,6 @@
 <?php
 
-namespace Src\Callbacks;
-
-use Src\Template;
+namespace App\Callbacks;
 
 class Section extends Template{
 

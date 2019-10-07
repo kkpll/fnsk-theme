@@ -1,8 +1,8 @@
 <?php
 
-namespace Src\Callbacks;
+namespace App\Callbacks;
 
-use Src\Base;
+use App\Base;
 
 class Sanitize extends Base{
 

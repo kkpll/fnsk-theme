@@ -1,7 +1,8 @@
 <?php
 
-namespace Src;
+namespace App\Components;
 
+use App\Base;
 
 class Csv extends Base{
 

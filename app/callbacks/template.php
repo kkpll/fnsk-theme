@@ -1,6 +1,8 @@
 <?php
 
-namespace Src;
+namespace App\Callbacks;
+
+use App\Base;
 
 class Template extends Base{
 

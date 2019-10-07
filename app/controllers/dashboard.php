@@ -1,10 +1,10 @@
 <?php
 
-namespace Src\Pages;
+namespace App\Controllers;
 
-use Src\Base;
-use Src\Callbacks\Sanitize;
-use Src\Callbacks\Page;
+use App\Base;
+use App\Callbacks\Sanitize;
+use App\Callbacks\Page;
 
 class Dashboard extends Base{
 
@@ -18,12 +18,9 @@ class Dashboard extends Base{
         $this->sanitize = new Sanitize();
         $this->page = new Page();
 
-        add_action( 'admin_init', array( $this, 'set_admin_form' ) );
-        add_action( 'admin_menu', array( $this, 'set_admin_page' ) );
-        
     }
 
-    public function set_admin_form(){
+    public function admin_init(){
 
         register_setting(
             'fnsk_top_group',
@@ -48,7 +45,7 @@ class Dashboard extends Base{
 
     }
 
-    public function set_admin_page(){
+    public function admin_menu(){
 
         add_menu_page(
             'FNSK',
